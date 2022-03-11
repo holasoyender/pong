@@ -21,9 +21,9 @@ int main()
     {
         TIMER
         game.background();
-        game.drawRectangle(p1.x, p1.y, p1.w, p1.h, 0, redF);
+        game.drawRectangle(p1.x, p1.y, p1.w, p1.h, 0, greenF);
         game.drawRectangle(p2.x, p2.y, p2.w, p2.h, 0, blueF);
-        game.drawRectangle(b.x, b.y, 2, 2, 0, greenF);
+        game.drawRectangle(b.x, b.y, 2, 2, 0, redF);
         b.update(felapsedTime);
         b.edges(p1.score, p2.score);
         b.checkCollide(p1, p2);
@@ -49,11 +49,11 @@ int main()
         {
             if (p1.score > p2.score)
             {
-                game.Text(30, 30, L"Player 1 Wins");
+                game.Text(30, 30, L"Jugador 1 Gana");
             }
             else
             {
-                game.Text(30, 30, L"Player 2 Wins");
+                game.Text(30, 30, L"Jugador 2 Gana");
             }
             game.display();
             break;
