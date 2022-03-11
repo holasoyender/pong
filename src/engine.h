@@ -40,7 +40,7 @@ using std::wstring;
     auto tp2 = std::chrono::system_clock::now();
 
 const float pi = 3.141592653589793238;
-// if some error related to console_font_infoEx occurs comment this part till the last #endif//
+
 typedef struct _CONSOLE_FONT_INFOEX
 {
     ULONG cbSize;
@@ -60,7 +60,7 @@ extern "C"
 }
 #endif
 
-class Fazen
+class Engine
 {
 protected:
     HANDLE outhnd;
@@ -80,14 +80,12 @@ protected:
     int fontW;
 
 public:
-    Fazen()
+    Engine()
     {
         outhnd = GetStdHandle(STD_OUTPUT_HANDLE);
         inhnd = GetStdHandle(STD_INPUT_HANDLE);
 
         rect_win = {0, 0, (short)(s_width - 1), short(s_height - 1)};
-
-        // Enable the window and mouse input events.
     }
 
     void push()
@@ -154,7 +152,6 @@ public:
             buffscreen[int(x) + s_width * int(y)].Attributes = col;
         }
     }
-    // BRESENHAM's LINE ALGO
     void drawLine(float x2, float y2, float x1, float y1, short col = whiteF, short c = 0x2588)
     {
         float x, y, dx, dy, dx1, dy1, px, py, xe, ye, i;
@@ -265,7 +262,7 @@ public:
 
 ;
 
-class Fazen2d : public Fazen
+class Engine2d : public Engine
 {
 public:
     const void make2DConsole(int fontw = 8, int fonth = 8, LPCTSTR title = (LPCTSTR) "Console")
@@ -289,20 +286,6 @@ public:
 
     const void drawRectangle(float x, float y, int b_width, int b_height, float angle = 0, short col = whiteF, int border = 0, short bordCol = greenF)
     {
-        // float tempx;
-        // float tempy;
-        // const float xoffset = -b_width / 2;
-        // const float yoffset = -b_height / 2;
-        // for (float i = 0; i <= b_height; i += 0.1)
-        // {
-        // 	for (float j = 0; j <= b_width; j += 0.1)
-        // 	{
-        // 		tempx = ((xoffset + j) * cos(angle) - (yoffset + i) * sin(angle));
-        // 		tempy = ((xoffset + j) * sin(angle) + (yoffset + i) * cos(angle));
-
-        // 		Plot(tempx - xoffset + x, tempy - yoffset + y, col);
-        // 	}
-        // }
         float tempx;
         float tempy;
         for (float i = 0; i <= b_height; i += 0.1)

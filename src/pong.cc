@@ -4,14 +4,14 @@
 #include "ball.h"
 #include "paddel.h"
 
-void showScores(Fazen2d game, Paddel p1, Paddel p2)
+void showScores(Engine2d game, Paddel p1, Paddel p2)
 {
     game.drawTextFromInt(10, 10, L"JUGADOR 1 : ", p1.score);
     game.drawTextFromInt(s_width - 30, 10, L"JUGADOR 2 : ", p2.score);
 }
 int main()
 {
-    Fazen2d game;
+    Engine2d game;
     game.make2DConsole(8, 8, (LPCTSTR) "Pong");
     TIMEVARS
     Ball b;
